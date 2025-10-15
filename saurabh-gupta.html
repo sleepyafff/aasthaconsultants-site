@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aastha Consultants — Saurabh Gupta House</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="project-style.css">
+  <style>
+    .project-detail-hero {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('saurabh-gupta.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Fullscreen Gallery Styles */
+    .fullscreen-gallery {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .fullscreen-gallery.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .fullscreen-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .fullscreen-image {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .fullscreen-caption {
+      color: white;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+
+    .gallery-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+
+    .gallery-btn {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.1);
+    }
+
+    .close-gallery {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-gallery:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.1);
+    }
+
+    .gallery-counter {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      font-size: 1rem;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    .gallery-item {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <a href="index.html" class="logo">Aastha Consultants</a>
+    <nav id="navMenu" class="main-nav" aria-label="Primary">
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#awards">Awards</a>
+      <a href="index.html#honorary">Honorary</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="project-detail-hero">
+    <div class="hero-content">
+      <h1>Saurabh Gupta Home</h1>
+      <p>Dehradun • 2024</p>
+    </div>
+  </section>
+
+  <section class="project-detail-content">
+    <div class="container">
+      <a href="index.html#projects" class="back-to-projects">
+        <i class="fas fa-arrow-left"></i> Back to Projects
+      </a>
+
+      <div class="project-meta">
+        <div class="meta-item">
+          <h4>Project Type</h4>
+          <p>Single Residential Unit</p>
+        </div>
+        <div class="meta-item">
+          <h4>Year Completed</h4>
+          <p>2024</p>
+        </div>
+        <div class="meta-item">
+          <h4>Location</h4>
+          <p>Dehradun, India</p>
+        </div>
+        <div class="meta-item">
+          <h4>Area</h4>
+          <p>5,000 sq.ft.</p>
+        </div>
+      </div>
+
+      <div class="project-description">
+        <h2>Project Overview</h2>
+        <div>
+          <p>Luxury neoclassical house which has one multiple design awards</p>
+         
+        </div>
+      </div>
+
+      <!-- Architectural Plans -->
+      <div class="gallery-section">
+        <h3>Architectural Plans</h3>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-gallery="plans" data-index="0">
+            <img src="12plan1.png" alt="Before Renovation Plan">
+            <div class="gallery-caption">Before Renovation Plan</div>
+          </div>
+          <div class="gallery-item" data-gallery="plans" data-index="1">
+            <img src="12plan2.png" alt="After Renovation Plan">
+            <div class="gallery-caption">After Renovation Plan</div>
+          </div>
+          <div class="gallery-item" data-gallery="plans" data-index="2">
+            <img src="12plan3.png" alt="Room Layouts">
+            <div class="gallery-caption">Room Layouts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Renders -->
+      <div class="gallery-section">
+        <h3>Project Renders</h3>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-gallery="renders" data-index="0">
+            <img src="12rend1.jpg" alt="Kid's Bedroom">
+            <div class="gallery-caption">Kid's Bedroom</div>
+          </div>
+          <div class="gallery-item" data-gallery="renders" data-index="1">
+            <img src="12rend2.jpg" alt="Kid's Bedroom">
+            <div class="gallery-caption">Kid's Bedroom</div>
+          </div>
+          <div class="gallery-item" data-gallery="renders" data-index="2">
+            <img src="12rend3.jpg" alt="Swimming Pool">
+            <div class="gallery-caption">Swimming Pool</div>
+          </div>
+          <div class="gallery-item" data-gallery="renders" data-index="3">
+            <img src="12rend4.jpg" alt="Dining/drawing">
+            <div class="gallery-caption">Dining/drawing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Views -->
+      <div class="gallery-section">
+        <h3>Additional Views</h3>
+        <div class="gallery-grid">
+          <div class="gallery-item" data-gallery="additional" data-index="0">
+            <img src="12add1.jpg" alt="Heritage Details">
+            <div class="gallery-caption">Heritage Details</div>
+          </div>
+          <div class="gallery-item" data-gallery="additional" data-index="1">
+            <img src="12add2.jpg" alt="Modern Amenities">
+            <div class="gallery-caption">Modern Amenities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen Gallery -->
+  <div class="fullscreen-gallery" id="fullscreenGallery">
+    <button class="close-gallery" id="closeGallery">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="gallery-counter" id="galleryCounter">1/9</div>
+    <div class="gallery-controls">
+      <button class="gallery-btn" id="prevBtn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="gallery-btn" id="nextBtn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="fullscreen-content">
+      <img class="fullscreen-image" id="fullscreenImage" src="" alt="">
+      <div class="fullscreen-caption" id="fullscreenCaption"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <div class="footer-logo">Aastha Consultants</div>
+          <p class="footer-text">Creating architectural excellence through innovative design, sustainable practices, and client collaboration since 2008.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#awards">Awards</a>
+          <a href="index.html#honorary">Honorary</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Aastha Consultants. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const header = document.querySelector('.site-header');
+
+    menuToggle.addEventListener('click', () => {
+      const opened = navMenu.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if(window.innerWidth >= 768) return;
+      if(!navMenu.classList.contains('active')) return;
+      if(e.target === menuToggle || navMenu.contains(e.target)) return;
+      navMenu.classList.remove('active');
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+
+    // Fullscreen Gallery Functionality
+    const fullscreenGallery = document.getElementById('fullscreenGallery');
+    const fullscreenImage = document.getElementById('fullscreenImage');
+    const fullscreenCaption = document.getElementById('fullscreenCaption');
+    const closeGallery = document.getElementById('closeGallery');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const galleryCounter = document.getElementById('galleryCounter');
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    // Collect all gallery items
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const allImages = [];
+
+    galleryItems.forEach(item => {
+      const img = item.querySelector('img');
+      const caption = item.querySelector('.gallery-caption');
+      
+      allImages.push({
+        src: img.src,
+        alt: img.alt,
+        caption: caption.textContent
+      });
+
+      item.addEventListener('click', () => {
+        const galleryType = item.getAttribute('data-gallery');
+        const index = parseInt(item.getAttribute('data-index'));
+        
+        // Get all images from the same gallery section
+        const gallerySection = item.closest('.gallery-section');
+        const sectionItems = gallerySection.querySelectorAll('.gallery-item');
+        
+        currentGallery = Array.from(sectionItems).map(sectionItem => {
+          const sectionImg = sectionItem.querySelector('img');
+          const sectionCaption = sectionItem.querySelector('.gallery-caption');
+          return {
+            src: sectionImg.src,
+            alt: sectionImg.alt,
+            caption: sectionCaption.textContent
+          };
+        });
+
+        currentIndex = index;
+        openGallery();
+      });
+    });
+
+    function openGallery() {
+      updateGallery();
+      fullscreenGallery.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGalleryFunc() {
+      fullscreenGallery.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function updateGallery() {
+      if (currentGallery.length > 0) {
+        fullscreenImage.src = currentGallery[currentIndex].src;
+        fullscreenImage.alt = currentGallery[currentIndex].alt;
+        fullscreenCaption.textContent = currentGallery[currentIndex].caption;
+        galleryCounter.textContent = `${currentIndex + 1}/${currentGallery.length}`;
+      }
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % currentGallery.length;
+      updateGallery();
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+      updateGallery();
+    }
+
+    // Event listeners for gallery controls
+    closeGallery.addEventListener('click', closeGalleryFunc);
+    nextBtn.addEventListener('click', nextImage);
+    prevBtn.addEventListener('click', prevImage);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!fullscreenGallery.classList.contains('active')) return;
+      
+      switch(e.key) {
+        case 'Escape':
+          closeGalleryFunc();
+          break;
+        case 'ArrowRight':
+          nextImage();
+          break;
+        case 'ArrowLeft':
+          prevImage();
+          break;
+      }
+    });
+
+    // Close gallery when clicking on background
+    fullscreenGallery.addEventListener('click', (e) => {
+      if (e.target === fullscreenGallery) {
+        closeGalleryFunc();
+      }
+    });
+  </script>
+</body>
+</html>
