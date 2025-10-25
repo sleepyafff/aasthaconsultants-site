@@ -5,13 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aastha Consultants - Architectural Excellence Since 1998</title>
     
+    <!-- Add these SEO meta tags -->
+    <meta name="description" content="Aastha Consultants - Award-winning architectural firm with 25+ years of excellence. Specializing in residential, commercial, and institutional design projects.">
+    <meta name="keywords" content="architecture, architectural consultants, building design, interior design, construction, architects in Dehradun, residential design, commercial architecture">
+    <meta name="author" content="Aastha Consultants">
+    
+    <!-- Open Graph meta tags for social media -->
+    <meta property="og:title" content="Aastha Consultants - Architectural Excellence Since 1998">
+    <meta property="og:description" content="Award-winning architectural firm with 25+ years of excellence in creating exceptional spaces that inspire and endure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aasthaconsultants.com">
+    <meta property="og:image" content="https://aasthaconsultants.com/logo.png">
+    <meta property="og:site_name" content="Aastha Consultants">
+    
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aastha Consultants - Architectural Excellence Since 1998">
+    <meta name="twitter:description" content="Award-winning architectural firm with 25+ years of excellence in creating exceptional spaces.">
+    <meta name="twitter:image" content="https://aasthaconsultants.com/logo.png">
+    
+    <!-- Favicon and app icons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
+    <!-- Additional icons for different devices -->
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="msapplication-TileColor" content="#0a0a0a">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <style>
         /* ===== MODERN BLACK THEME ===== */
         * { 
             box-sizing: border-box; 
@@ -575,10 +599,99 @@
             transform: scale(1.3);
         }
 
+        /* ===== DOCTORATE HONOR SECTION ===== */
+        .doctorate-honor {
+            background: #1a1a1a;
+            padding: 100px 0;
+        }
+
+        .doctorate-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .doctorate-text {
+            text-align: left;
+        }
+
+        .doctorate-photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-container {
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+        }
+
+        .doctorate-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-container:hover .doctorate-image {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 30px 20px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .photo-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .photo-overlay p {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            margin-bottom: 0;
+        }
+
+        .honor-highlight {
+            background: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+
         /* Mobile adjustments */
         @media (max-width: 1024px) {
             .slider-item {
                 flex: 0 0 calc(50% - 15px);
+            }
+            
+            .doctorate-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .doctorate-photo {
+                order: -1;
+            }
+            
+            .photo-container {
+                max-width: 400px;
             }
         }
 
@@ -599,6 +712,10 @@
             .slider-nav.next {
                 right: -25px;
             }
+            
+            .photo-container {
+                max-width: 350px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -613,6 +730,10 @@
             
             .slider-nav {
                 display: none;
+            }
+            
+            .photo-container {
+                max-width: 100%;
             }
         }
 
@@ -970,6 +1091,7 @@
         <nav class="desktop-nav">
             <a href="#projects">Projects</a>
             <a href="#about">About</a>
+            <a href="#doctorate">Doctorate Honor</a>
             <a href="#awards">Awards</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -996,6 +1118,7 @@
                     </ul>
                 </li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#doctorate">Doctorate Honor</a></li>
                 <li><a href="#awards">Awards</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1127,6 +1250,31 @@
         </div>
     </section>
 
+    <!-- DOCTORATE HONOR SECTION -->
+    <section id="doctorate" class="doctorate-honor section-spacing">
+        <div class="container">
+            <div class="doctorate-content">
+                <div class="doctorate-text">
+                    <h2>Doctorate Honor</h2>
+                    <div class="years-experience">Honored by Government of India</div>
+                    <p>We are proud to announce that our principal architect has been conferred with an Honorary Doctorate by the Government of India in recognition of outstanding contributions to the field of architecture and sustainable design.</p>
+                    <p>This prestigious honor acknowledges our commitment to innovative architectural practices that blend traditional Indian design principles with modern sustainable technologies.</p>
+                    <p>The doctorate was awarded for demonstrating excellence in architectural innovation, sustainable development, and contributing significantly to India's built environment through projects that showcase environmental consciousness and cultural sensitivity.</p>
+                    <p class="honor-highlight">"This recognition inspires us to continue pushing the boundaries of architectural excellence while maintaining our commitment to sustainable and culturally relevant design."</p>
+                </div>
+                <div class="doctorate-photo">
+                    <div class="photo-container">
+                        <img src="honorary.jpg" alt="Doctorate Honor Ceremony - Government of India" class="doctorate-image">
+                        <div class="photo-overlay">
+                            <h3>Doctorate Honor Ceremony</h3>
+                            <p>Government of India • Recognition for Architectural Excellence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- AWARDS SECTION -->
     <section id="awards" class="awards section-spacing">
         <div class="container">
@@ -1236,6 +1384,7 @@
                 <div class="footer-links">
                     <a href="#projects">Projects</a>
                     <a href="#about">About</a>
+                    <a href="#doctorate">Doctorate Honor</a>
                     <a href="#awards">Awards</a>
                     <a href="#contact">Contact</a>
                 </div>
