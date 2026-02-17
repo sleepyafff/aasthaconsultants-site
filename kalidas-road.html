@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Aastha Consultants — Saurabh Gupta House</title>
+  <title>Aastha Consultants — Kalidas Road Residence</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="project-style.css">
   <style>
     .project-detail-hero {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('saurabh-gupta.jpg');
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('kalidas-road.jpeg');
       background-size: cover;
       background-position: center;
+      height: 70vh;
     }
 
     /* Fullscreen Gallery Styles */
@@ -102,6 +103,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 2001;
     }
 
     .close-gallery:hover {
@@ -118,44 +120,41 @@
       background: rgba(0,0,0,0.5);
       padding: 8px 16px;
       border-radius: 20px;
+      z-index: 2001;
     }
 
     .gallery-item {
       cursor: pointer;
       transition: transform 0.3s ease;
+      margin-bottom: 20px;
     }
 
     .gallery-item:hover {
       transform: scale(1.02);
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 30px;
-    }
-
     .gallery-item img {
       width: 100%;
-      height: 250px;
+      height: auto;
+      max-height: 600px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 12px;
     }
 
     .gallery-caption {
-      margin-top: 10px;
+      margin-top: 15px;
       text-align: center;
       color: #b0b0b0;
+      font-size: 1.1rem;
     }
 
     .gallery-section {
-      margin: 60px 0;
+      margin: 80px 0;
     }
 
     .gallery-section h3 {
-      font-size: 1.8rem;
-      margin-bottom: 30px;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
       position: relative;
       display: inline-block;
     }
@@ -165,11 +164,61 @@
       position: absolute;
       bottom: -10px;
       left: 0;
-      width: 60px;
-      height: 2px;
+      width: 80px;
+      height: 3px;
       background: #ffffff;
     }
 
+    /* Video Section - Full Width Prominent */
+    .video-section {
+      margin: 100px 0;
+      width: 100%;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-caption {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #b0b0b0;
+    }
+
+    .video-section h3 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .video-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: #ffffff;
+    }
+
+    /* Project Meta */
     .project-meta {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -192,6 +241,7 @@
       margin-bottom: 0;
     }
 
+    /* Project Description */
     .project-description {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -200,7 +250,7 @@
     }
 
     .project-description h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 2rem;
     }
 
@@ -235,6 +285,17 @@
       transform: translateX(-5px);
     }
 
+    /* Image grid - larger, fewer per row */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .full-width-image {
+      grid-column: 1 / -1;
+    }
+
     @media (max-width: 992px) {
       .project-meta {
         grid-template-columns: repeat(2, 1fr);
@@ -244,14 +305,14 @@
         grid-template-columns: 1fr;
         gap: 40px;
       }
+      
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
       .project-meta {
-        grid-template-columns: 1fr;
-      }
-      
-      .gallery-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -276,7 +337,7 @@
 
   <section class="project-detail-hero">
     <div class="hero-content">
-      <h1>Saurabh Gupta Home</h1>
+      <h1>Kalidas Road Residence</h1>
       <p>Dehradun • 2024</p>
     </div>
   </section>
@@ -290,7 +351,7 @@
       <div class="project-meta">
         <div class="meta-item">
           <h4>Project Type</h4>
-          <p>Single Residential Unit</p>
+          <p>Luxury Builder Project</p>
         </div>
         <div class="meta-item">
           <h4>Year Completed</h4>
@@ -298,62 +359,87 @@
         </div>
         <div class="meta-item">
           <h4>Location</h4>
-          <p>Dehradun, India</p>
+          <p>Kalidas Road, Dehradun</p>
         </div>
         <div class="meta-item">
           <h4>Area</h4>
-          <p>5,000 sq.ft.</p>
+          <p>12,000 sq.ft.</p>
         </div>
       </div>
 
       <div class="project-description">
         <h2>Project Overview</h2>
         <div>
-          <p>Luxury neoclassical house which has won multiple design awards</p>
+          <p>A magnificent 12,000 square foot luxury builder project on prestigious Kalidas Road. This architectural masterpiece combines contemporary design with timeless elegance, featuring expansive living spaces, premium finishes, and thoughtful attention to detail throughout.</p>
+          <p>The design maximizes natural light and ventilation while creating seamless transitions between indoor and outdoor spaces. Each level has been carefully planned to offer privacy, comfort, and stunning views of the surrounding landscape.</p>
         </div>
       </div>
 
-      <!-- Project Renders -->
+      <!-- VIDEO SECTION - Prominent standalone section with autoplay on scroll -->
+      <div class="video-section" id="videoSection">
+        <h3>Walkthrough Video</h3>
+        <div class="video-container">
+          <video id="walkthroughVideo" muted playsinline loop>
+            <source src="12walkthrough.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-caption">Complete Walkthrough of Kalidas Road Residence</div>
+      </div>
+
+      <!-- Interior Views - Large format, one after another -->
       <div class="gallery-section">
-        <h3>Project Renders</h3>
-        <div class="gallery-grid">
-          <div class="gallery-item" data-gallery="renders" data-index="0">
-            <img src="12rend1.jpg" alt="Kid's Bedroom">
-            <div class="gallery-caption">Kid's Bedroom</div>
+        <h3>Interior Views</h3>
+        <div class="image-grid">
+          <div class="gallery-item full-width-image" data-gallery="interiors" data-index="0" data-type="image">
+            <img src="12drawing.jpeg" alt="Drawing Room">
+            <div class="gallery-caption">Drawing Room</div>
           </div>
-          <div class="gallery-item" data-gallery="renders" data-index="1">
-            <img src="12rend2.jpg" alt="Kid's Bedroom">
-            <div class="gallery-caption">Kid's Bedroom</div>
+          <div class="gallery-item full-width-image" data-gallery="interiors" data-index="1" data-type="image">
+            <img src="12dining.jpeg" alt="Dining Room">
+            <div class="gallery-caption">Dining Room</div>
           </div>
-          <div class="gallery-item" data-gallery="renders" data-index="2">
-            <img src="12rend3.jpg" alt="Swimming Pool">
-            <div class="gallery-caption">Swimming Pool</div>
+          <div class="gallery-item full-width-image" data-gallery="interiors" data-index="2" data-type="image">
+            <img src="12kitchen.jpeg" alt="Kitchen">
+            <div class="gallery-caption">Modern Kitchen</div>
           </div>
-          <div class="gallery-item" data-gallery="renders" data-index="3">
-            <img src="12rend4.jpg" alt="Dining/Drawing">
-            <div class="gallery-caption">Dining/Drawing Room</div>
+          <div class="gallery-item full-width-image" data-gallery="interiors" data-index="3" data-type="image">
+            <img src="12pooja.jpeg" alt="Pooja Room">
+            <div class="gallery-caption">Pooja Room</div>
+          </div>
+          <div class="gallery-item full-width-image" data-gallery="interiors" data-index="4" data-type="image">
+            <img src="12bed1.jpeg" alt="Master Bedroom">
+            <div class="gallery-caption">Master Bedroom</div>
+          </div>
+          <div class="gallery-item full-width-image" data-gallery="interiors" data-index="5" data-type="image">
+            <img src="12bed2.jpeg" alt="Bedroom 2">
+            <div class="gallery-caption">Bedroom 2</div>
+          </div>
+          <div class="gallery-item full-width-image" data-gallery="interiors" data-index="6" data-type="image">
+            <img src="12guest.jpeg" alt="Guest Bedroom">
+            <div class="gallery-caption">Guest Bedroom</div>
+          </div>
+          <div class="gallery-item full-width-image" data-gallery="interiors" data-index="7" data-type="image">
+            <img src="12kids.jpeg" alt="Kids Bedroom">
+            <div class="gallery-caption">Kids Bedroom</div>
           </div>
         </div>
       </div>
 
-      <!-- Additional Views -->
+      <!-- Exterior - Large format -->
       <div class="gallery-section">
-        <h3>Additional Views</h3>
-        <div class="gallery-grid">
-          <div class="gallery-item" data-gallery="additional" data-index="0">
-            <img src="12add1.jpg" alt="Entry">
-            <div class="gallery-caption">Entry</div>
-          </div>
-          <div class="gallery-item" data-gallery="additional" data-index="1">
-            <img src="12add2.jpg" alt="Entry Foyer">
-            <div class="gallery-caption">Entry Foyer</div>
+        <h3>Exterior View</h3>
+        <div class="image-grid">
+          <div class="gallery-item full-width-image" data-gallery="exterior" data-index="0" data-type="image">
+            <img src="12facade.png" alt="Front Facade">
+            <div class="gallery-caption">Front Facade</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Fullscreen Gallery -->
+  <!-- Fullscreen Gallery (for images only) -->
   <div class="fullscreen-gallery" id="fullscreenGallery">
     <button class="close-gallery" id="closeGallery">
       <i class="fas fa-times"></i>
@@ -367,9 +453,8 @@
         <i class="fas fa-chevron-right"></i>
       </button>
     </div>
-    <div class="fullscreen-content">
-      <img class="fullscreen-image" id="fullscreenImage" src="" alt="">
-      <div class="fullscreen-caption" id="fullscreenCaption"></div>
+    <div class="fullscreen-content" id="fullscreenContent">
+      <!-- Content dynamically loaded -->
     </div>
   </div>
 
@@ -423,10 +508,55 @@
       menuToggle.setAttribute('aria-expanded', 'false');
     });
 
-    // Fullscreen Gallery Functionality
+    // Video Autoplay on Scroll with Sound
+    const video = document.getElementById('walkthroughVideo');
+    const videoSection = document.getElementById('videoSection');
+
+    // Function to check if element is in viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+      );
+    }
+
+    // Function to handle video play/pause based on scroll
+    function handleVideoOnScroll() {
+      if (isInViewport(videoSection)) {
+        // Video is in view - play with sound
+        video.muted = false;
+        video.play().catch(e => {
+          // Autoplay with sound might be blocked by browser
+          console.log('Autoplay with sound blocked:', e);
+          // Fallback: try playing muted
+          video.muted = true;
+          video.play();
+        });
+      } else {
+        // Video is out of view - pause
+        video.pause();
+      }
+    }
+
+    // Add scroll listener with throttling for performance
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleVideoOnScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Initial check
+    setTimeout(handleVideoOnScroll, 1000);
+
+    // Fullscreen Gallery Functionality (for images only)
     const fullscreenGallery = document.getElementById('fullscreenGallery');
-    const fullscreenImage = document.getElementById('fullscreenImage');
-    const fullscreenCaption = document.getElementById('fullscreenCaption');
+    const fullscreenContent = document.getElementById('fullscreenContent');
     const closeGallery = document.getElementById('closeGallery');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -435,29 +565,24 @@
     let currentGallery = [];
     let currentIndex = 0;
 
-    // Collect all gallery items
+    // Add click handlers to all gallery items (images only, not video)
     const galleryItems = document.querySelectorAll('.gallery-item');
 
     galleryItems.forEach(item => {
       item.addEventListener('click', () => {
-        const galleryType = item.getAttribute('data-gallery');
-        const index = parseInt(item.getAttribute('data-index'));
-        
         // Get all images from the same gallery section
         const gallerySection = item.closest('.gallery-section');
         const sectionItems = gallerySection.querySelectorAll('.gallery-item');
         
         currentGallery = Array.from(sectionItems).map(sectionItem => {
-          const sectionImg = sectionItem.querySelector('img');
-          const sectionCaption = sectionItem.querySelector('.gallery-caption');
           return {
-            src: sectionImg.src,
-            alt: sectionImg.alt,
-            caption: sectionCaption.textContent
+            type: 'image',
+            src: sectionItem.querySelector('img').src,
+            caption: sectionItem.querySelector('.gallery-caption').textContent
           };
         });
 
-        currentIndex = index;
+        currentIndex = parseInt(item.getAttribute('data-index'));
         openGallery();
       });
     });
@@ -466,18 +591,39 @@
       updateGallery();
       fullscreenGallery.classList.add('active');
       document.body.style.overflow = 'hidden';
+      
+      // Pause video if playing when gallery opens
+      if (video) video.pause();
     }
 
     function closeGalleryFunc() {
       fullscreenGallery.classList.remove('active');
       document.body.style.overflow = 'auto';
+      
+      // Resume video based on scroll position when gallery closes
+      handleVideoOnScroll();
     }
 
     function updateGallery() {
       if (currentGallery.length > 0) {
-        fullscreenImage.src = currentGallery[currentIndex].src;
-        fullscreenImage.alt = currentGallery[currentIndex].alt;
-        fullscreenCaption.textContent = currentGallery[currentIndex].caption;
+        const item = currentGallery[currentIndex];
+        
+        // Clear previous content
+        fullscreenContent.innerHTML = '';
+        
+        // Create image element
+        const img = document.createElement('img');
+        img.src = item.src;
+        img.alt = item.caption;
+        img.className = 'fullscreen-image';
+        fullscreenContent.appendChild(img);
+        
+        // Add caption
+        const caption = document.createElement('div');
+        caption.className = 'fullscreen-caption';
+        caption.textContent = item.caption;
+        fullscreenContent.appendChild(caption);
+        
         galleryCounter.textContent = `${currentIndex + 1}/${currentGallery.length}`;
       }
     }
