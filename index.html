@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aastha Consultants - Architectural Excellence Since 1998</title>
     
-    <!-- Add these SEO meta tags -->
+    <!-- SEO meta tags -->
     <meta name="description" content="Aastha Consultants - Award-winning architectural firm with 25+ years of excellence. Specializing in residential, commercial, and institutional design projects.">
     <meta name="keywords" content="architecture, architectural consultants, building design, interior design, construction, architects in Dehradun, residential design, commercial architecture">
     <meta name="author" content="Aastha Consultants">
     
-    <!-- Open Graph meta tags for social media -->
+    <!-- Open Graph meta tags -->
     <meta property="og:title" content="Aastha Consultants - Architectural Excellence Since 1998">
     <meta property="og:description" content="Award-winning architectural firm with 25+ years of excellence in creating exceptional spaces that inspire and endure.">
     <meta property="og:type" content="website">
@@ -29,13 +29,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    
-    <!-- Additional icons for different devices -->
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#0a0a0a">
     <meta name="msapplication-TileColor" content="#0a0a0a">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
+    <style>
         /* ===== MODERN BLACK THEME ===== */
         * { 
             box-sizing: border-box; 
@@ -774,32 +776,37 @@
             object-fit: cover;
         }
 
-        /* ===== AWARDS SECTION ===== */
+        /* ===== AWARDS SECTION - VERTICAL FORMAT ===== */
         .awards {
             background: #1a1a1a;
         }
 
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+        .awards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .award-item {
             background: #0a0a0a;
-            padding: 40px;
+            padding: 60px;
             transition: transform 0.3s ease;
             border: 1px solid #333;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 80px;
         }
 
         .award-item:hover {
-            transform: translateY(-5px);
+            transform: translateX(10px);
+            border-color: #555;
         }
 
         .award-image {
-            margin-bottom: 1.5rem;
-            height: 120px;
+            flex: 0 0 400px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -811,15 +818,58 @@
             object-fit: contain;
         }
 
-        .award-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        .award-text {
+            flex: 1;
         }
 
-        .award-item p {
-            font-size: 0.9rem;
+        .award-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .award-text p {
+            font-size: 1.4rem;
             color: #b0b0b0;
             margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 992px) {
+            .award-item {
+                padding: 40px;
+                gap: 40px;
+            }
+            
+            .award-image {
+                flex: 0 0 300px;
+                height: 300px;
+            }
+            
+            .award-text h3 {
+                font-size: 2rem;
+            }
+            
+            .award-text p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .award-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+                gap: 30px;
+            }
+            
+            .award-image {
+                flex: 0 0 250px;
+                height: 250px;
+            }
+            
+            .award-text h3 {
+                font-size: 1.8rem;
+            }
         }
 
         /* ===== CONTACT SECTION ===== */
@@ -923,6 +973,17 @@
             resize: vertical;
         }
 
+        /* reCAPTCHA styling */
+        .g-recaptcha {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .g-recaptcha > div {
+            margin: 0 auto;
+        }
+
         .submit-btn {
             background: #ffffff;
             color: #0a0a0a;
@@ -933,10 +994,16 @@
             cursor: pointer;
             transition: all 0.3s ease;
             letter-spacing: 1px;
+            width: 100%;
         }
 
         .submit-btn:hover {
             background: #b0b0b0;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         /* ===== FOOTER ===== */
@@ -1043,6 +1110,11 @@
             .desktop-nav {
                 display: none;
             }
+            
+            .g-recaptcha {
+                transform: scale(0.9);
+                transform-origin: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1068,6 +1140,10 @@
             
             .logo-text {
                 font-size: 1rem;
+            }
+            
+            .g-recaptcha {
+                transform: scale(0.8);
             }
         }
     </style>
@@ -1105,13 +1181,19 @@
                         All Projects <i class="fas fa-chevron-down"></i>
                     </button>
                     <ul class="mobile-projects-list" id="mobileProjectsList">
+                        <!-- Complete list of all projects -->
                         <li><a href="saurabh-gupta.html">Saurabh Gupta Residence</a></li>
+                        <li><a href="allotted-plotting.html">Allotted Plotting - Old Mussoorie Road</a></li>
+                        <li><a href="kalidas-road.html">Luxury Project - Kalidas Road</a></li>
+                        <li><a href="kirsali-road.html">5BHK Villa - Kirsali Road</a></li>
+                        <li><a href="mega-county.html">Mega County</a></li>
+                        <li><a href="forest-residency.html">Forest Residency</a></li>
                         <li><a href="#projects">Summer Valley Junior School</a></li>
                         <li><a href="#projects">LIC Office</a></li>
                         <li><a href="#projects">Sushant Ahuja Residence</a></li>
                         <li><a href="#projects">Stallion College of Engineering</a></li>
-                        <li><a href="#projects">Mega County</a></li>
-                        <li><a href="#projects">Forest Residency</a></li>
+                        <li><a href="best-park-avenue.html">Best Park Avenue</a></li>
+                        <li><a href="kings-residency.html">Kings Residency</a></li>
                         <li><a href="#projects">Trinity College of B.ed</a></li>
                         <li><a href="#projects">Sanju Memorial Clinic</a></li>
                         <li><a href="#projects">Green Living Goswami</a></li>
@@ -1134,7 +1216,7 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
+    <!-- PROJECTS SECTION WITH ALL PROJECTS -->
     <section id="projects" class="projects section-spacing">
         <div class="container">
             <div class="projects-header">
@@ -1142,7 +1224,7 @@
                 <p>Our portfolio of exceptional architectural designs</p>
             </div>
             <div class="project-grid">
-                <!-- Saurabh Gupta Residence (Clickable) -->
+                <!-- Saurabh Gupta Residence -->
                 <div class="project-card clickable" data-project="saurabh-gupta" onclick="window.location.href='saurabh-gupta.html'">
                     <div class="project-image-container">
                         <img src="saurabh-gupta.jpg" alt="Saurabh Gupta Residence" class="project-img-primary">
@@ -1154,31 +1236,91 @@
                     </div>
                 </div>
                 
-                <!-- Mega County (Non-clickable) -->
-                <div class="project-card" data-project="mega-county">
+                <!-- Allotted Plotting -->
+                <div class="project-card clickable" data-project="allotted-plotting" onclick="window.location.href='allotted-plotting.html'">
+                    <div class="project-image-container">
+                        <img src="allotted-plotting.jpg" alt="Allotted Plotting - Old Mussoorie Road" class="project-img-primary">
+                    </div>
+                    <div class="project-info">
+                        <h3>Allotted Plotting <i class="fas fa-external-link-alt"></i></h3>
+                        <span class="project-year">2024</span>
+                        <p>Neighbourhood Design, Old Mussoorie Road</p>
+                    </div>
+                </div>
+                
+                <!-- Kalidas Road -->
+                <div class="project-card clickable" data-project="kalidas-road" onclick="window.location.href='kalidas-road.html'">
+                    <div class="project-image-container">
+                        <img src="kalidas-road.jpeg" alt="Luxury Project Kalidas Road" class="project-img-primary">
+                    </div>
+                    <div class="project-info">
+                        <h3>Kalidas Road Residence <i class="fas fa-external-link-alt"></i></h3>
+                        <span class="project-year">2024</span>
+                        <p>12,000 sq.ft. Luxury Builder Project</p>
+                    </div>
+                </div>
+                
+                <!-- Kirsali Road -->
+                <div class="project-card clickable" data-project="kirsali-road" onclick="window.location.href='kirsali-road.html'">
+                    <div class="project-image-container">
+                        <img src="kirsali-road.jpeg" alt="5BHK Villa Kirsali Road" class="project-img-primary">
+                    </div>
+                    <div class="project-info">
+                        <h3>Kirsali Road Villa <i class="fas fa-external-link-alt"></i></h3>
+                        <span class="project-year">2023</span>
+                        <p>Luxury 5BHK with Walkthrough</p>
+                    </div>
+                </div>
+                
+                <!-- Mega County (NEW) -->
+                <div class="project-card clickable" data-project="mega-county" onclick="window.location.href='mega-county.html'">
                     <div class="project-image-container">
                         <img src="mega-county.jpg" alt="Mega County" class="project-img-primary">
                     </div>
                     <div class="project-info">
-                        <h3>Mega County</h3>
-                        <span class="project-year">2023</span>
-                        <p>Mussoorie Road Residential Complex</p>
+                        <h3>Mega County <i class="fas fa-external-link-alt"></i></h3>
+                        <span class="project-year">2024</span>
+                        <p>Premium Residential Development</p>
                     </div>
                 </div>
                 
-                <!-- Forest Residency (Non-clickable) -->
-                <div class="project-card" data-project="forest-residency">
+                <!-- Forest Residency (NEW) -->
+                <div class="project-card clickable" data-project="forest-residency" onclick="window.location.href='forest-residency.html'">
                     <div class="project-image-container">
                         <img src="forest-residency.jpg" alt="Forest Residency" class="project-img-primary">
                     </div>
                     <div class="project-info">
-                        <h3>Forest Residency</h3>
-                        <span class="project-year">2022</span>
-                        <p>Mussoorie Road Luxury Apartments</p>
+                        <h3>Forest Residency <i class="fas fa-external-link-alt"></i></h3>
+                        <span class="project-year">2024</span>
+                        <p>Luxury Apartments Amidst Nature</p>
                     </div>
                 </div>
                 
-                <!-- Green Living Goswami (Non-clickable) -->
+                <!-- Best Park Avenue (renamed from Mega County) -->
+                <div class="project-card" data-project="best-park-avenue">
+                    <div class="project-image-container">
+                        <img src="best-park-avenue.jpg" alt="Best Park Avenue" class="project-img-primary">
+                    </div>
+                    <div class="project-info">
+                        <h3>Best Park Avenue</h3>
+                        <span class="project-year">2023</span>
+                        <p>Premium Residential Complex</p>
+                    </div>
+                </div>
+                
+                <!-- Kings Residency (renamed from Forest Residency) -->
+                <div class="project-card" data-project="kings-residency">
+                    <div class="project-image-container">
+                        <img src="kings-residency.jpg" alt="Kings Residency" class="project-img-primary">
+                    </div>
+                    <div class="project-info">
+                        <h3>Kings Residency</h3>
+                        <span class="project-year">2022</span>
+                        <p>Luxury Apartments, Mussoorie Road</p>
+                    </div>
+                </div>
+                
+                <!-- Green Living Goswami (ADDED BACK) -->
                 <div class="project-card" data-project="green-living">
                     <div class="project-image-container">
                         <img src="green-living.jpg" alt="Green Living Goswami" class="project-img-primary">
@@ -1193,7 +1335,7 @@
         </div>
     </section>
 
-    <!-- ENHANCED PROJECTS SLIDER -->
+    <!-- PROJECTS SLIDER WITH ALL PROJECTS -->
     <section class="projects-slider-section">
         <div class="slider-container">
             <div class="slider-wrapper">
@@ -1208,14 +1350,20 @@
                     </button>
                     
                     <div class="slider-track" id="sliderTrack">
+                        <!-- Complete list of all projects -->
+                        <div class="slider-item"><div class="slider-item-content"><span>Saurabh Gupta Residence</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content"><span>Allotted Plotting - Old Mussoorie</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content"><span>Kalidas Road Luxury</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content"><span>Kirsali Road 5BHK</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content"><span>Mega County</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content"><span>Forest Residency</span></div></div>
                         <div class="slider-item"><div class="slider-item-content"><span>Summer Valley Junior School</span></div></div>
                         <div class="slider-item"><div class="slider-item-content"><span>LIC Office</span></div></div>
                         <div class="slider-item"><div class="slider-item-content"><span>Sushant Ahuja Residence</span></div></div>
                         <div class="slider-item"><div class="slider-item-content"><span>Stallion College of Engineering</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Mega County</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Forest Residency</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content"><span>Best Park Avenue</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content"><span>Kings Residency</span></div></div>
                         <div class="slider-item"><div class="slider-item-content"><span>Trinity College of B.ed</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Saurabh Gupta Residence</span></div></div>
                         <div class="slider-item"><div class="slider-item-content"><span>Sanju Memorial Clinic</span></div></div>
                         <div class="slider-item"><div class="slider-item-content"><span>Green Living Goswami</span></div></div>
                     </div>
@@ -1225,9 +1373,7 @@
                     </button>
                 </div>
                 
-                <div class="slider-dots" id="sliderDots">
-                    <!-- Dots will be generated by JavaScript -->
-                </div>
+                <div class="slider-dots" id="sliderDots"></div>
             </div>
         </div>
     </section>
@@ -1275,36 +1421,38 @@
         </div>
     </section>
 
-    <!-- AWARDS SECTION -->
+    <!-- AWARDS SECTION - VERTICAL FORMAT -->
     <section id="awards" class="awards section-spacing">
         <div class="container">
             <h2>Awards & Recognition</h2>
-            <div class="awards-grid">
+            <div class="awards-container">
                 <div class="award-item">
                     <div class="award-image">
                         <img src="award1.jpg" alt="NDia Design Award 2024">
                     </div>
                     <div class="award-text">
                         <h3>NDia Design Award 2024</h3>
-                        <p>2024 </p>
+                        <p>Awarded to Ar. Sanjeev Duseja by actress Amrita Rao and Ar. Rao</p>
                     </div>
                 </div>
+                
                 <div class="award-item">
                     <div class="award-image">
                         <img src="award2.jpg" alt="Success Magazine">
                     </div>
                     <div class="award-text">
                         <h3>Success Magazine</h3>
-                        <p>2024 </p>
+                        <p>Top 10 Architects of the Year 2024</p>
                     </div>
                 </div>
+                
                 <div class="award-item">
                     <div class="award-image">
                         <img src="award3.jpg" alt="Design Asia Magazine">
                     </div>
                     <div class="award-text">
                         <h3>Design Asia Magazine</h3>
-                        <p>2024 </p>
+                        <p>Excellence in Sustainable Design 2024</p>
                     </div>
                 </div>
             </div>
@@ -1330,7 +1478,7 @@
                             <i class="fas fa-phone"></i>
                             <div>
                                 <p><strong>Phone</strong></p>
-                                <a href="tel:+91 9068777662">9068777662</a>
+                                <a href="tel:+919068777662">9068777662</a>
                             </div>
                         </div>
                         <div class="contact-detail">
@@ -1355,18 +1503,22 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form action="https://formsubmit.co/e846dcc5b5aa18f348757f5b82fca4de" method="POST" class="contact-form">
+                    <form id="contactForm" action="https://formsubmit.co/e846dcc5b5aa18f348757f5b82fca4de" method="POST">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email" required>
                         <input type="text" name="subject" placeholder="Subject">
                         <textarea name="message" placeholder="Your Message" required></textarea>
-                    
+                        
+                        <!-- Google reCAPTCHA v2 -->
+                        <!-- IMPORTANT: Replace YOUR_RECAPTCHA_SITE_KEY with your actual site key from Google -->
+                        <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+                        
                         <!-- FormSubmit.co options -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_subject" value="New Message from Aastha Consultants Website">
 
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -1416,11 +1568,10 @@
         let currentTranslate = 0;
         let prevTranslate = 0;
 
-        // Always show exactly 3 slides on desktop
         function getSlidesToShow() {
             if (window.innerWidth < 768) return 1;
             if (window.innerWidth < 1024) return 2;
-            return 3; // Exactly 3 slides on desktop
+            return 3;
         }
 
         function getSlideWidth() {
@@ -1558,8 +1709,10 @@
         mobileProjectsBtn.addEventListener('click', () => {
             mobileProjectsList.classList.toggle('active');
             const icon = mobileProjectsBtn.querySelector('i');
-            icon.classList.toggle('fa-chevron-down');
-            icon.classList.toggle('fa-chevron-up');
+            if (icon) {
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            }
         });
 
         // Header scroll effect
@@ -1597,16 +1750,50 @@
             });
         });
 
-        // Project card click handlers - only for clickable cards
+        // Project card click handlers
         document.querySelectorAll('.project-card.clickable').forEach(card => {
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function(e) {
+                // Prevent click if clicking on a link inside
+                if (e.target.tagName === 'A' || e.target.closest('a')) return;
+                
                 const project = this.getAttribute('data-project');
-                if (project === 'saurabh-gupta') {
-                    window.location.href = 'saurabh-gupta.html';
+                const validProjects = [
+                    'saurabh-gupta', 
+                    'allotted-plotting', 
+                    'kalidas-road', 
+                    'kirsali-road',
+                    'mega-county',
+                    'forest-residency'
+                ];
+                
+                if (validProjects.includes(project)) {
+                    window.location.href = `${project}.html`;
                 }
             });
         });
-    </script>
 
+        // Form submission with reCAPTCHA validation
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                // Check if reCAPTCHA is loaded
+                if (typeof grecaptcha !== 'undefined') {
+                    const response = grecaptcha.getResponse();
+                    
+                    if (response.length === 0) {
+                        e.preventDefault();
+                        alert('Please complete the reCAPTCHA verification.');
+                        return;
+                    }
+                }
+                
+                // Disable button to prevent double submission
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+            });
+        }
+    </script>
 </body>
 </html>
