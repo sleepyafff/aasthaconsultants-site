@@ -34,8 +34,6 @@
     <meta name="msapplication-TileColor" content="#0a0a0a">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     
     <style>
         /* ===== MODERN BLACK THEME ===== */
@@ -437,6 +435,43 @@
             color: #b0b0b0;
             font-size: 0.9rem;
             margin-bottom: 0;
+        }
+
+        /* Image Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.95);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .close-modal:hover {
+            color: #b0b0b0;
         }
 
         /* ===== PROJECTS SLIDER ===== */
@@ -973,17 +1008,6 @@
             resize: vertical;
         }
 
-        /* reCAPTCHA styling */
-        .g-recaptcha {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .g-recaptcha > div {
-            margin: 0 auto;
-        }
-
         .submit-btn {
             background: #ffffff;
             color: #0a0a0a;
@@ -1110,11 +1134,6 @@
             .desktop-nav {
                 display: none;
             }
-            
-            .g-recaptcha {
-                transform: scale(0.9);
-                transform-origin: center;
-            }
         }
 
         @media (max-width: 576px) {
@@ -1140,10 +1159,6 @@
             
             .logo-text {
                 font-size: 1rem;
-            }
-            
-            .g-recaptcha {
-                transform: scale(0.8);
             }
         }
     </style>
@@ -1182,21 +1197,21 @@
                     </button>
                     <ul class="mobile-projects-list" id="mobileProjectsList">
                         <!-- Complete list of all projects -->
-                        <li><a href="saurabh-gupta.html">Saurabh Gupta Residence</a></li>
-                        <li><a href="allotted-plotting.html">Allotted Plotting - Old Mussoorie Road</a></li>
+                        <li><a href="#" onclick="showProjectImage('saurabh-gupta.jpg'); return false;">Saurabh Gupta Residence</a></li>
+                        <li><a href="#" onclick="showProjectImage('allotted-plotting.jpg'); return false;">Allotted Plotting - Old Mussoorie Road</a></li>
                         <li><a href="kalidas-road.html">Luxury Project - Kalidas Road</a></li>
-                        <li><a href="kirsali-road.html">5BHK Villa - Kirsali Road</a></li>
-                        <li><a href="mega-county.html">Mega County</a></li>
-                        <li><a href="forest-residency.html">Forest Residency</a></li>
-                        <li><a href="#projects">Summer Valley Junior School</a></li>
-                        <li><a href="#projects">LIC Office</a></li>
-                        <li><a href="#projects">Sushant Ahuja Residence</a></li>
-                        <li><a href="#projects">Stallion College of Engineering</a></li>
-                        <li><a href="best-park-avenue.html">Best Park Avenue</a></li>
-                        <li><a href="kings-residency.html">Kings Residency</a></li>
-                        <li><a href="#projects">Trinity College of B.ed</a></li>
-                        <li><a href="#projects">Sanju Memorial Clinic</a></li>
-                        <li><a href="#projects">Green Living Goswami</a></li>
+                        <li><a href="#" onclick="showProjectImage('kirsali-road.jpeg'); return false;">5BHK Villa - Kirsali Road</a></li>
+                        <li><a href="#" onclick="showProjectImage('mega-county.jpg'); return false;">Mega County</a></li>
+                        <li><a href="#" onclick="showProjectImage('forest-residency.jpg'); return false;">Forest Residency</a></li>
+                        <li><a href="#" onclick="showProjectImage('summer-valley.jpg'); return false;">Summer Valley Junior School</a></li>
+                        <li><a href="#" onclick="showProjectImage('lic-office.jpg'); return false;">LIC Office</a></li>
+                        <li><a href="#" onclick="showProjectImage('sushant-ahuja.jpg'); return false;">Sushant Ahuja Residence</a></li>
+                        <li><a href="#" onclick="showProjectImage('stallion-college.jpg'); return false;">Stallion College of Engineering</a></li>
+                        <li><a href="#" onclick="showProjectImage('best-park-avenue.jpg'); return false;">Best Park Avenue</a></li>
+                        <li><a href="#" onclick="showProjectImage('kings-residency.jpg'); return false;">Kings Residency</a></li>
+                        <li><a href="#" onclick="showProjectImage('trinity-college.jpg'); return false;">Trinity College of B.ed</a></li>
+                        <li><a href="#" onclick="showProjectImage('sanju-clinic.jpg'); return false;">Sanju Memorial Clinic</a></li>
+                        <li><a href="#" onclick="showProjectImage('green-living.jpg'); return false;">Green Living Goswami</a></li>
                     </ul>
                 </li>
                 <li><a href="#about">About</a></li>
@@ -1206,6 +1221,12 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
     <!-- HERO SECTION -->
     <section class="hero">
@@ -1225,7 +1246,7 @@
             </div>
             <div class="project-grid">
                 <!-- Saurabh Gupta Residence -->
-                <div class="project-card clickable" data-project="saurabh-gupta" onclick="window.location.href='saurabh-gupta.html'">
+                <div class="project-card clickable" onclick="window.location.href='saurabh-gupta.html'">
                     <div class="project-image-container">
                         <img src="saurabh-gupta.jpg" alt="Saurabh Gupta Residence" class="project-img-primary">
                     </div>
@@ -1236,80 +1257,80 @@
                     </div>
                 </div>
                 
-                <!-- Allotted Plotting -->
-                <div class="project-card clickable" data-project="allotted-plotting" onclick="window.location.href='allotted-plotting.html'">
+                <!-- Allotted Plotting - shows image instead of HTML -->
+                <div class="project-card clickable" onclick="showProjectImage('allotted-plotting.jpg')">
                     <div class="project-image-container">
                         <img src="allotted-plotting.jpg" alt="Allotted Plotting - Old Mussoorie Road" class="project-img-primary">
                     </div>
                     <div class="project-info">
-                        <h3>Allotted Plotting <i class="fas fa-external-link-alt"></i></h3>
-                        <span class="project-year">2024</span>
+                        <h3>Allotted Plotting</h3>
+                        <span class="project-year">2025</span>
                         <p>Neighbourhood Design, Old Mussoorie Road</p>
                     </div>
                 </div>
                 
                 <!-- Kalidas Road -->
-                <div class="project-card clickable" data-project="kalidas-road" onclick="window.location.href='kalidas-road.html'">
+                <div class="project-card clickable" onclick="window.location.href='kalidas-road.html'">
                     <div class="project-image-container">
                         <img src="kalidas-road.jpeg" alt="Luxury Project Kalidas Road" class="project-img-primary">
                     </div>
                     <div class="project-info">
                         <h3>Kalidas Road Residence <i class="fas fa-external-link-alt"></i></h3>
-                        <span class="project-year">2024</span>
+                        <span class="project-year">2025</span>
                         <p>12,000 sq.ft. Luxury Builder Project</p>
                     </div>
                 </div>
                 
-                <!-- Kirsali Road -->
-                <div class="project-card clickable" data-project="kirsali-road" onclick="window.location.href='kirsali-road.html'">
+                <!-- Kirsali Road - shows image instead of HTML -->
+                <div class="project-card clickable" onclick="showProjectImage('kirsali-road.jpeg')">
                     <div class="project-image-container">
                         <img src="kirsali-road.jpeg" alt="5BHK Villa Kirsali Road" class="project-img-primary">
                     </div>
                     <div class="project-info">
-                        <h3>Kirsali Road Villa <i class="fas fa-external-link-alt"></i></h3>
-                        <span class="project-year">2023</span>
+                        <h3>Kirsali Road Villa</h3>
+                        <span class="project-year">2026</span>
                         <p>Luxury 5BHK with Walkthrough</p>
                     </div>
                 </div>
                 
-                <!-- Mega County (NEW) -->
-                <div class="project-card clickable" data-project="mega-county" onclick="window.location.href='mega-county.html'">
+                <!-- Mega County - shows image instead of HTML -->
+                <div class="project-card clickable" onclick="showProjectImage('mega-county.jpg')">
                     <div class="project-image-container">
                         <img src="mega-county.jpg" alt="Mega County" class="project-img-primary">
                     </div>
                     <div class="project-info">
-                        <h3>Mega County <i class="fas fa-external-link-alt"></i></h3>
-                        <span class="project-year">2024</span>
+                        <h3>Mega County</h3>
+                        <span class="project-year">2013</span>
                         <p>Premium Residential Development</p>
                     </div>
                 </div>
                 
-                <!-- Forest Residency (NEW) -->
-                <div class="project-card clickable" data-project="forest-residency" onclick="window.location.href='forest-residency.html'">
+                <!-- Forest Residency - shows image instead of HTML -->
+                <div class="project-card clickable" onclick="showProjectImage('forest-residency.jpg')">
                     <div class="project-image-container">
                         <img src="forest-residency.jpg" alt="Forest Residency" class="project-img-primary">
                     </div>
                     <div class="project-info">
-                        <h3>Forest Residency <i class="fas fa-external-link-alt"></i></h3>
-                        <span class="project-year">2024</span>
+                        <h3>Forest Residency</h3>
+                        <span class="project-year">2017</span>
                         <p>Luxury Apartments Amidst Nature</p>
                     </div>
                 </div>
                 
-                <!-- Best Park Avenue (renamed from Mega County) -->
-                <div class="project-card" data-project="best-park-avenue">
+                <!-- Best Park Avenue -->
+                <div class="project-card" onclick="showProjectImage('best-park-avenue.jpg')">
                     <div class="project-image-container">
                         <img src="best-park-avenue.jpg" alt="Best Park Avenue" class="project-img-primary">
                     </div>
                     <div class="project-info">
                         <h3>Best Park Avenue</h3>
-                        <span class="project-year">2023</span>
+                        <span class="project-year">2015</span>
                         <p>Premium Residential Complex</p>
                     </div>
                 </div>
                 
-                <!-- Kings Residency (renamed from Forest Residency) -->
-                <div class="project-card" data-project="kings-residency">
+                <!-- Kings Residency -->
+                <div class="project-card" onclick="showProjectImage('kings-residency.jpg')">
                     <div class="project-image-container">
                         <img src="kings-residency.jpg" alt="Kings Residency" class="project-img-primary">
                     </div>
@@ -1320,14 +1341,14 @@
                     </div>
                 </div>
                 
-                <!-- Green Living Goswami (ADDED BACK) -->
-                <div class="project-card" data-project="green-living">
+                <!-- Green Living Goswami -->
+                <div class="project-card" onclick="showProjectImage('green-living.jpg')">
                     <div class="project-image-container">
                         <img src="green-living.jpg" alt="Green Living Goswami" class="project-img-primary">
                     </div>
                     <div class="project-info">
                         <h3>Green Living Goswami</h3>
-                        <span class="project-year">2023</span>
+                        <span class="project-year">2025</span>
                         <p>Sustainable Residential Design</p>
                     </div>
                 </div>
@@ -1351,21 +1372,21 @@
                     
                     <div class="slider-track" id="sliderTrack">
                         <!-- Complete list of all projects -->
-                        <div class="slider-item"><div class="slider-item-content"><span>Saurabh Gupta Residence</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Allotted Plotting - Old Mussoorie</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Kalidas Road Luxury</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Kirsali Road 5BHK</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Mega County</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Forest Residency</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Summer Valley Junior School</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>LIC Office</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Sushant Ahuja Residence</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Stallion College of Engineering</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Best Park Avenue</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Kings Residency</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Trinity College of B.ed</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Sanju Memorial Clinic</span></div></div>
-                        <div class="slider-item"><div class="slider-item-content"><span>Green Living Goswami</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('saurabh-gupta.jpg')"><span>Saurabh Gupta Residence</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('allotted-plotting.jpg')"><span>Allotted Plotting - Old Mussoorie</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="window.location.href='kalidas-road.html'"><span>Kalidas Road Luxury</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('kirsali-road.jpeg')"><span>Kirsali Road 5BHK</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('mega-county.jpg')"><span>Mega County</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('forest-residency.jpg')"><span>Forest Residency</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('summer-valley.jpg')"><span>Summer Valley Junior School</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('lic-office.jpg')"><span>LIC Office</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('sushant-ahuja.jpg')"><span>Sushant Ahuja Residence</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('stallion-college.jpg')"><span>Stallion College of Engineering</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('best-park-avenue.jpg')"><span>Best Park Avenue</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('kings-residency.jpg')"><span>Kings Residency</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('trinity-college.jpg')"><span>Trinity College of B.ed</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('sanju-clinic.jpg')"><span>Sanju Memorial Clinic</span></div></div>
+                        <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('green-living.jpg')"><span>Green Living Goswami</span></div></div>
                     </div>
                     
                     <button class="slider-nav next" id="sliderNext">
@@ -1509,11 +1530,7 @@
                         <input type="text" name="subject" placeholder="Subject">
                         <textarea name="message" placeholder="Your Message" required></textarea>
                         
-                        <!-- Google reCAPTCHA v2 -->
-                        <!-- IMPORTANT: Replace YOUR_RECAPTCHA_SITE_KEY with your actual site key from Google -->
-                        <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
-                        
-                        <!-- FormSubmit.co options -->
+                        <!-- FormSubmit.co options - reCAPTCHA removed -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_subject" value="New Message from Aastha Consultants Website">
@@ -1554,6 +1571,33 @@
         const mobileProjectsBtn = document.getElementById('mobileProjectsBtn');
         const mobileProjectsList = document.getElementById('mobileProjectsList');
         const header = document.querySelector('.site-header');
+
+        // Modal elements
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        // Function to show project image
+        function showProjectImage(imageSrc) {
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+            
+            // Close mobile menu if open
+            mobileNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        // Function to close modal
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
 
         // Slider elements
         const sliderTrack = document.getElementById('sliderTrack');
@@ -1750,45 +1794,12 @@
             });
         });
 
-        // Project card click handlers
-        document.querySelectorAll('.project-card.clickable').forEach(card => {
-            card.addEventListener('click', function(e) {
-                // Prevent click if clicking on a link inside
-                if (e.target.tagName === 'A' || e.target.closest('a')) return;
-                
-                const project = this.getAttribute('data-project');
-                const validProjects = [
-                    'saurabh-gupta', 
-                    'allotted-plotting', 
-                    'kalidas-road', 
-                    'kirsali-road',
-                    'mega-county',
-                    'forest-residency'
-                ];
-                
-                if (validProjects.includes(project)) {
-                    window.location.href = `${project}.html`;
-                }
-            });
-        });
-
-        // Form submission with reCAPTCHA validation
+        // Form submission
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
 
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
-                // Check if reCAPTCHA is loaded
-                if (typeof grecaptcha !== 'undefined') {
-                    const response = grecaptcha.getResponse();
-                    
-                    if (response.length === 0) {
-                        e.preventDefault();
-                        alert('Please complete the reCAPTCHA verification.');
-                        return;
-                    }
-                }
-                
                 // Disable button to prevent double submission
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending...';
