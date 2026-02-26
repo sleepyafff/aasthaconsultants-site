@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aastha Consultants - Architectural Excellence Since 1998</title>
     
-    <!-- SEO meta tags -->
     <meta name="description" content="Aastha Consultants - Award-winning architectural firm with 25+ years of excellence. Specializing in residential, commercial, and institutional design projects.">
     <meta name="keywords" content="architecture, architectural consultants, building design, interior design, construction, architects in Dehradun, residential design, commercial architecture">
     <meta name="author" content="Aastha Consultants">
     
-    <!-- Open Graph meta tags -->
     <meta property="og:title" content="Aastha Consultants - Architectural Excellence Since 1998">
     <meta property="og:description" content="Award-winning architectural firm with 25+ years of excellence in creating exceptional spaces that inspire and endure.">
     <meta property="og:type" content="website">
@@ -18,13 +16,11 @@
     <meta property="og:image" content="https://aasthaconsultants.com/logo.png">
     <meta property="og:site_name" content="Aastha Consultants">
     
-    <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Aastha Consultants - Architectural Excellence Since 1998">
     <meta name="twitter:description" content="Award-winning architectural firm with 25+ years of excellence in creating exceptional spaces.">
     <meta name="twitter:image" content="https://aasthaconsultants.com/logo.png">
     
-    <!-- Favicon and app icons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -34,9 +30,10 @@
     <meta name="msapplication-TileColor" content="#0a0a0a">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     
     <style>
-        /* ===== MODERN BLACK THEME ===== */
         * { 
             box-sizing: border-box; 
             margin: 0; 
@@ -63,7 +60,6 @@
             display: block;
         }
 
-        /* ===== TYPOGRAPHY ===== */
         h1, h2, h3, h4 {
             font-weight: 400;
             line-height: 1.1;
@@ -106,7 +102,6 @@
             line-height: 1.7;
         }
 
-        /* ===== LAYOUT & CONTAINERS ===== */
         .container {
             width: 100%;
             max-width: 1400px;
@@ -118,7 +113,6 @@
             padding: 120px 0;
         }
 
-        /* ===== HEADER ===== */
         .site-header {
             position: fixed;
             top: 0;
@@ -301,7 +295,6 @@
             color: #b0b0b0;
         }
 
-        /* ===== HERO SECTION ===== */
         .hero {
             height: 100vh;
             display: flex;
@@ -356,7 +349,6 @@
             color: #0a0a0a;
         }
 
-        /* ===== PROJECTS SECTION ===== */
         .projects {
             background: #0a0a0a;
         }
@@ -437,7 +429,6 @@
             margin-bottom: 0;
         }
 
-        /* Image Modal */
         .modal {
             display: none;
             position: fixed;
@@ -474,7 +465,6 @@
             color: #b0b0b0;
         }
 
-        /* ===== PROJECTS SLIDER ===== */
         .projects-slider-section {
             background: #0a0a0a;
             padding: 80px 0;
@@ -636,7 +626,6 @@
             transform: scale(1.3);
         }
 
-        /* ===== DOCTORATE HONOR SECTION ===== */
         .doctorate-honor {
             background: #1a1a1a;
             padding: 100px 0;
@@ -712,7 +701,6 @@
             font-size: 1.3rem;
         }
 
-        /* Mobile adjustments */
         @media (max-width: 1024px) {
             .slider-item {
                 flex: 0 0 calc(50% - 15px);
@@ -774,7 +762,6 @@
             }
         }
 
-        /* ===== ABOUT SECTION ===== */
         .about {
             background: #0a0a0a;
         }
@@ -811,7 +798,6 @@
             object-fit: cover;
         }
 
-        /* ===== AWARDS SECTION - VERTICAL FORMAT ===== */
         .awards {
             background: #1a1a1a;
         }
@@ -907,7 +893,6 @@
             }
         }
 
-        /* ===== CONTACT SECTION ===== */
         .contact {
             background: #0a0a0a;
         }
@@ -1008,6 +993,12 @@
             resize: vertical;
         }
 
+        /* reCAPTCHA dark theme wrapper */
+        .recaptcha-wrapper {
+            margin-bottom: 20px;
+            filter: invert(0.85) hue-rotate(180deg);
+        }
+
         .submit-btn {
             background: #ffffff;
             color: #0a0a0a;
@@ -1030,7 +1021,6 @@
             cursor: not-allowed;
         }
 
-        /* ===== FOOTER ===== */
         .site-footer {
             background: #1a1a1a;
             color: #b0b0b0;
@@ -1075,15 +1065,6 @@
             color: #ffffff;
         }
 
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 30px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        /* ===== RESPONSIVE STYLES ===== */
         @media (max-width: 992px) {
             .about-content,
             .contact-content,
@@ -1178,7 +1159,6 @@
             <a href="index.html" class="logo-text">Aastha Consultants</a>
         </div>
 
-        <!-- Desktop Navigation -->
         <nav class="desktop-nav">
             <a href="#projects">Projects</a>
             <a href="#about">About</a>
@@ -1187,7 +1167,6 @@
             <a href="#contact">Contact</a>
         </nav>
 
-        <!-- Mobile Navigation -->
         <nav class="mobile-nav" id="mobileNav">
             <ul class="mobile-nav-list">
                 <li><a href="#projects">Projects</a></li>
@@ -1196,7 +1175,6 @@
                         All Projects <i class="fas fa-chevron-down"></i>
                     </button>
                     <ul class="mobile-projects-list" id="mobileProjectsList">
-                        <!-- Complete list of all projects -->
                         <li><a href="#" onclick="showProjectImage('saurabh-gupta.jpg'); return false;">Saurabh Gupta Residence</a></li>
                         <li><a href="#" onclick="showProjectImage('allotted-plotting.jpg'); return false;">Allotted Plotting - Old Mussoorie Road</a></li>
                         <li><a href="kalidas-road.html">Luxury Project - Kalidas Road</a></li>
@@ -1237,7 +1215,7 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION WITH ALL PROJECTS -->
+    <!-- PROJECTS SECTION -->
     <section id="projects" class="projects section-spacing">
         <div class="container">
             <div class="projects-header">
@@ -1245,7 +1223,6 @@
                 <p>Our portfolio of exceptional architectural designs</p>
             </div>
             <div class="project-grid">
-                <!-- Saurabh Gupta Residence -->
                 <div class="project-card clickable" onclick="window.location.href='saurabh-gupta.html'">
                     <div class="project-image-container">
                         <img src="saurabh-gupta.jpg" alt="Saurabh Gupta Residence" class="project-img-primary">
@@ -1257,7 +1234,6 @@
                     </div>
                 </div>
                 
-                <!-- Allotted Plotting - shows image instead of HTML -->
                 <div class="project-card clickable" onclick="showProjectImage('allotted-plotting.jpg')">
                     <div class="project-image-container">
                         <img src="allotted-plotting.jpg" alt="Allotted Plotting - Old Mussoorie Road" class="project-img-primary">
@@ -1269,7 +1245,6 @@
                     </div>
                 </div>
                 
-                <!-- Kalidas Road -->
                 <div class="project-card clickable" onclick="window.location.href='kalidas-road.html'">
                     <div class="project-image-container">
                         <img src="kalidas-road.jpeg" alt="Luxury Project Kalidas Road" class="project-img-primary">
@@ -1281,7 +1256,6 @@
                     </div>
                 </div>
                 
-                <!-- Kirsali Road - shows image instead of HTML -->
                 <div class="project-card clickable" onclick="showProjectImage('kirsali-road.jpeg')">
                     <div class="project-image-container">
                         <img src="kirsali-road.jpeg" alt="5BHK Villa Kirsali Road" class="project-img-primary">
@@ -1293,7 +1267,6 @@
                     </div>
                 </div>
                 
-                <!-- Mega County - shows image instead of HTML -->
                 <div class="project-card clickable" onclick="showProjectImage('mega-county.jpg')">
                     <div class="project-image-container">
                         <img src="mega-county.jpg" alt="Mega County" class="project-img-primary">
@@ -1305,7 +1278,6 @@
                     </div>
                 </div>
                 
-                <!-- Forest Residency - shows image instead of HTML -->
                 <div class="project-card clickable" onclick="showProjectImage('forest-residency.jpg')">
                     <div class="project-image-container">
                         <img src="forest-residency.jpg" alt="Forest Residency" class="project-img-primary">
@@ -1317,7 +1289,6 @@
                     </div>
                 </div>
                 
-                <!-- Best Park Avenue -->
                 <div class="project-card" onclick="showProjectImage('best-park-avenue.jpg')">
                     <div class="project-image-container">
                         <img src="best-park-avenue.jpg" alt="Best Park Avenue" class="project-img-primary">
@@ -1329,7 +1300,6 @@
                     </div>
                 </div>
                 
-                <!-- Kings Residency -->
                 <div class="project-card" onclick="showProjectImage('kings-residency.jpg')">
                     <div class="project-image-container">
                         <img src="kings-residency.jpg" alt="Kings Residency" class="project-img-primary">
@@ -1341,7 +1311,6 @@
                     </div>
                 </div>
                 
-                <!-- Green Living Goswami -->
                 <div class="project-card" onclick="showProjectImage('green-living.jpg')">
                     <div class="project-image-container">
                         <img src="green-living.jpg" alt="Green Living Goswami" class="project-img-primary">
@@ -1356,7 +1325,7 @@
         </div>
     </section>
 
-    <!-- PROJECTS SLIDER WITH ALL PROJECTS -->
+    <!-- PROJECTS SLIDER -->
     <section class="projects-slider-section">
         <div class="slider-container">
             <div class="slider-wrapper">
@@ -1371,7 +1340,6 @@
                     </button>
                     
                     <div class="slider-track" id="sliderTrack">
-                        <!-- Complete list of all projects -->
                         <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('saurabh-gupta.jpg')"><span>Saurabh Gupta Residence</span></div></div>
                         <div class="slider-item"><div class="slider-item-content" onclick="showProjectImage('allotted-plotting.jpg')"><span>Allotted Plotting - Old Mussoorie</span></div></div>
                         <div class="slider-item"><div class="slider-item-content" onclick="window.location.href='kalidas-road.html'"><span>Kalidas Road Luxury</span></div></div>
@@ -1442,7 +1410,7 @@
         </div>
     </section>
 
-    <!-- AWARDS SECTION - VERTICAL FORMAT -->
+    <!-- AWARDS SECTION -->
     <section id="awards" class="awards section-spacing">
         <div class="container">
             <h2>Awards & Recognition</h2>
@@ -1530,10 +1498,16 @@
                         <input type="text" name="subject" placeholder="Subject">
                         <textarea name="message" placeholder="Your Message" required></textarea>
                         
-                        <!-- FormSubmit.co options - reCAPTCHA removed -->
+                        <!-- FormSubmit options -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_subject" value="New Message from Aastha Consultants Website">
+
+                        <!-- Google reCAPTCHA v2 -->
+                        <!-- ⚠️ REPLACE "YOUR_SITE_KEY_HERE" with your actual key from https://www.google.com/recaptcha/admin -->
+                        <div class="recaptcha-wrapper">
+                            <div class="g-recaptcha" data-sitekey=6LeyX3gsAAAAAOSCpDKkso5Av6Htd9Dpu8lo6GOl></div>
+                        </div>
 
                         <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
                     </form>
@@ -1558,54 +1532,42 @@
                     <a href="#contact">Contact</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Aastha Consultants. All rights reserved.</p>
-            </div>
         </div>
     </footer>
 
     <script>
-        // DOM elements
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
         const mobileProjectsBtn = document.getElementById('mobileProjectsBtn');
         const mobileProjectsList = document.getElementById('mobileProjectsList');
         const header = document.querySelector('.site-header');
 
-        // Modal elements
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
 
-        // Function to show project image
         function showProjectImage(imageSrc) {
             modal.style.display = 'block';
             modalImg.src = imageSrc;
-            
-            // Close mobile menu if open
             mobileNav.classList.remove('active');
             menuToggle.classList.remove('active');
             menuToggle.setAttribute('aria-expanded', 'false');
         }
 
-        // Function to close modal
         function closeModal() {
             modal.style.display = 'none';
         }
 
-        // Close modal when clicking outside the image
         window.onclick = function(event) {
             if (event.target == modal) {
                 closeModal();
             }
         }
 
-        // Slider elements
         const sliderTrack = document.getElementById('sliderTrack');
         const sliderPrev = document.getElementById('sliderPrev');
         const sliderNext = document.getElementById('sliderNext');
         const sliderDots = document.getElementById('sliderDots');
 
-        // Slider configuration
         let currentSlide = 0;
         let isDragging = false;
         let startPos = 0;
@@ -1627,7 +1589,6 @@
 
         const totalSlides = document.querySelectorAll('.slider-item').length;
 
-        // Initialize slider dots
         function initSliderDots() {
             const slidesToShow = getSlidesToShow();
             const totalDots = Math.ceil(totalSlides / slidesToShow);
@@ -1642,7 +1603,6 @@
             }
         }
 
-        // Update slider position
         function updateSlider() {
             const slidesToShow = getSlidesToShow();
             const maxSlide = Math.max(0, Math.ceil(totalSlides / slidesToShow) - 1);
@@ -1653,19 +1613,16 @@
             sliderTrack.style.transform = `translateX(${translateX}px)`;
             sliderTrack.style.transition = 'transform 0.4s ease';
             
-            // Update dots
             document.querySelectorAll('.slider-dot').forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
         }
 
-        // Navigate to specific slide
         function goToSlide(slideIndex) {
             currentSlide = slideIndex;
             updateSlider();
         }
 
-        // Next slide
         function nextSlide() {
             const slidesToShow = getSlidesToShow();
             const maxSlide = Math.ceil(totalSlides / slidesToShow) - 1;
@@ -1678,7 +1635,6 @@
             }
         }
 
-        // Previous slide
         function prevSlide() {
             const slidesToShow = getSlidesToShow();
             const maxSlide = Math.ceil(totalSlides / slidesToShow) - 1;
@@ -1691,7 +1647,6 @@
             }
         }
 
-        // Touch events for mobile
         function touchStart(event) {
             startPos = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
             isDragging = true;
@@ -1707,49 +1662,38 @@
         function touchEnd() {
             isDragging = false;
             const movedBy = currentTranslate - prevTranslate;
-            
             if (movedBy < -50) {
                 nextSlide();
             } else if (movedBy > 50) {
                 prevSlide();
             }
-            
             prevTranslate = currentTranslate;
         }
 
-        // Event listeners for slider
         sliderNext.addEventListener('click', nextSlide);
         sliderPrev.addEventListener('click', prevSlide);
-
-        // Touch events for mobile
         sliderTrack.addEventListener('touchstart', touchStart);
         sliderTrack.addEventListener('touchmove', touchMove);
         sliderTrack.addEventListener('touchend', touchEnd);
-
-        // Mouse events for desktop drag
         sliderTrack.addEventListener('mousedown', touchStart);
         sliderTrack.addEventListener('mousemove', touchMove);
         sliderTrack.addEventListener('mouseup', touchEnd);
         sliderTrack.addEventListener('mouseleave', touchEnd);
 
-        // Initialize slider
         initSliderDots();
         updateSlider();
 
-        // Update slider on window resize
         window.addEventListener('resize', () => {
             initSliderDots();
             updateSlider();
         });
 
-        // Toggle mobile menu
         menuToggle.addEventListener('click', () => {
             const opened = mobileNav.classList.toggle('active');
             menuToggle.classList.toggle('active');
             menuToggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
         });
 
-        // Toggle projects list in mobile menu
         mobileProjectsBtn.addEventListener('click', () => {
             mobileProjectsList.classList.toggle('active');
             const icon = mobileProjectsBtn.querySelector('i');
@@ -1759,7 +1703,6 @@
             }
         });
 
-        // Header scroll effect
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1768,7 +1711,6 @@
             }
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1777,13 +1719,8 @@
                     const headerOffset = header.offsetHeight;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-
-                    // Close mobile menu after click
                     if (window.innerWidth < 768) {
                         mobileNav.classList.remove('active');
                         menuToggle.classList.remove('active');
@@ -1794,13 +1731,18 @@
             });
         });
 
-        // Form submission
+        // Form submission with reCAPTCHA validation
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
 
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
-                // Disable button to prevent double submission
+                const recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse) {
+                    e.preventDefault();
+                    alert('Please complete the CAPTCHA verification before submitting.');
+                    return;
+                }
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending...';
             });
